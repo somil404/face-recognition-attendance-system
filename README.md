@@ -65,41 +65,43 @@ Exporting File Window:
 
 ## 🗂️ Project Structure
 
+```
 Face Recognition Attendance System/
-      ├── main.py                  # Main launcher and navigation hub
-      ├── give_details.py          # Student registration, CRUD operations
-      ├── attendance_btn.py        # Face recognition engine (threaded)
-      ├── export_files.py          # CSV export for attendance and students
-      ├── banner.png               # UI banner image
-      ├── app_config.json          # Auto-generated: stores image folder path
-      ├── attendance.db            # Auto-generated: SQLite database
-      ├── EncodeFile.p             # Auto-generated: face encodings cache
-      └── Resources/
-            ├── background.png     # Attendance window background
-            └── Modes/
-                  ├── 1.png        # Idle mode overlay
-                  ├── 2.png        # Loading mode overlay
-                  ├── 3.png        # Already marked overlay
-                  └── 4.png        # Success mode overlay
-
+├── main.py                  # Main launcher and navigation hub
+├── give_details.py          # Student registration and CRUD operations
+├── attendance_btn.py        # Face recognition engine (multi-threaded)
+├── export_files.py          # CSV export for attendance and students
+├── banner.png               # UI banner image
+├── app_config.json          # Auto-generated: stores image folder path
+├── attendance.db            # Auto-generated: SQLite database
+├── EncodeFile.p             # Auto-generated: face encodings cache
+└── Resources/
+        ├── background.png
+        └── Modes/
+                ├── 1.png    # Idle mode overlay
+                ├── 2.png    # Loading mode overlay
+                ├── 3.png    # Already marked overlay
+                └── 4.png    # Success mode overlay
+```
 ---
 
 ## ⚙️ How It Works
 
+```
 Student registers → Photo captured → Face encoded → Saved to DB
-                │
-                ▼
+                                                          │
+                                                          ▼
 Attendance session starts → Webcam reads frames → Face detected
-                │
-                ▼
-Matched against saved encodings
-                │
-    ┌───────────┴───────────┐
-Match found             No match
-    │                       │
-Attendance marked     "Unknown Face"
-in SQLite with        shown on screen
-date and time
+                                                          │
+                                                          ▼
+                                   Matched against saved encodings
+                                                          │
+                                              ┌───────────┴──────────┐
+                                         Match found            No match
+                                              │                      │
+                                   Attendance marked          "Unknown Face"
+                                   with date and time          on screen
+```
 
 ---
 
