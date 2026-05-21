@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.db
+*.p
+app_config.json
+images/
+dist/
+build/
+*.spec
